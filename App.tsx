@@ -1,41 +1,42 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TextInput } from "react-native";
-import React, { useEffect, useState } from "react";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "./screen/Home";
+import Dict from "./screen/Dict";
+import { Fontisto } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+
+// url no found error command : expo r --tunnel
 
 export default function App() {
-  const [regex, onChangeRegex] = React.useState<any>(null);
-  const [text, onChangeText] = React.useState<any>(null);
-  let result;
-
-  if (regex && text) {
-    const regexx = new RegExp(`${regex}`, "gm");
-    result = text.match(regexx);
-  }
-
+  const Tab = createBottomTabNavigator();
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeRegex}
-        value={regex}
-        placeholder="정규표현식을 입력하세요"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-        placeholder="검사할 문자열을 입력하세요"
-      />
-      <Text>모든 문자열</Text>
-      <Text>{text}</Text>
-      <Text>매칭된 문자열</Text>
-      <View style={styles.result}>
-        {result &&
-          result.map((item, index) => {
-            return <Text key={index}>{item} </Text>;
-          })}
-      </View>
-      <StatusBar style="light" />
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen
+            name="Regex 실험실"
+            options={{
+              tabBarIcon: ({ size, color }) => (
+                <Fontisto name="laboratory" size={size} color={color} />
+              ),
+            }}
+            component={Home}
+          />
+          <Tab.Screen
+            name="Regex 사전"
+            options={{
+              tabBarIcon: ({ size, color }) => (
+                <AntDesign name="book" size={size} color={color} />
+              ),
+            }}
+            component={Dict}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -43,16 +44,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: 40,
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-  result: {
-    flexDirection: "row",
+
+    paddingHorizontal: 10,
   },
 });

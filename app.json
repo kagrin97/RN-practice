@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "RN-weather",
-    "slug": "RN-weather",
+    "name": "Regex for Korean",
+    "slug": "RN-regex",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splashh.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FFFFFF"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,16 +18,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mingyukang.RNregex"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/Logo.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.mingyukang.RNregex"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "regex for Korean ",
+    "githubUrl": "https://github.com/kagrin97/RN-regex"
   }
 }
